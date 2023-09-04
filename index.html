@@ -1,51 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Title Test 2</title>
-
-    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
 </head>
-
-
 <body>
-    <div class="contact__us">
-        <div class="contact__us_label">
-            Contact Us
-        </div>
-        <div class="contact_us_form">
-            <form action="/action_page.php">
-                <div class="contact__us_input">
-                    <div class="contact__us_input_first">
-                        <input type="text" placeholder="Full Name" required>
-                    </div>
-                    <div class="contact__us_input_second">
-                        <input type="text" placeholder="Email" required>
-                    </div>
-                </div>
-                <div class="contact__us_input">
-                    <div class="contact__us_input_first">
-                        <input type="text" placeholder="Address" required>
-                    </div>
-                    <div class="contact__us_input_second">
-                        <input type="text" placeholder="Phone" required>
-                    </div>
-                </div>
-                <div class="contact__us_input">
-                    <textarea name="textareaName"  placeholder="Phone" id="" cols="30" rows="10"></textarea>
-                </div>
-                <div class="contact__us_input contact__us_button">
-                    <button>Send</button>
-                </div>
+    <div class="main_container">
+        <div class="form_container">
+            <h1>Get Started Now</h1>
+            <form class="form_content">
+                <label for="nameId">Name</label>
+                <input type="text" name="nameId">
+                <label for="emailAddress">Email address</label>
+                <input type="text" name="emailAddress">
+                <label for="password">Password</label>
+                <input type="text" name="password">
+                <label for="password">Password</label>
+                <input type="checkbox" name="password">
+                <input type="submit" value="Signup">
             </form>
+            <hr>
+            <div class="social_form_content">
+                <button type="submit">Sign in with Google</button>
+                <button type="submit">Sign in with Apple</button>
+            </div>
+            <div class="footer_form_content">
+                Have an account?
+                <a href="http://signin">Sign in</a>
+            </div>
         </div>
+        <div class="image_container"></div>
     </div>
 </body>
-
-
 </html>
