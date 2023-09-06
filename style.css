@@ -22,16 +22,45 @@ body{
     display: flex;
     align-items: center;
     justify-content:center;
+    flex-direction: column;
 }
 
-
+.form_container div{
+    /* border: 1px solid red; */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 404px;
+    height: 58px;
+}
+.form_container div>label{
+    display: block;
+    padding-bottom: 10px;
+    /* border: 1px solid green; */
+}
+.form_container div>input{
+    display: block;
+    padding: 10px;
+    /* border: 1px solid rgb(41, 4, 253); */
+    width: 98%;
+}
+.form_container input[type="checkbox"] {
+    outline: 3px solid black; 
+    display: inline;
+}
+.social_form_content{
+    display: flex;
+    justify-content:space-around; 
+}
 .image_container{
     flex-grow: 1;
     border-radius: 45px 0;
-    background-image: url('image.png');
+    background-image: url('https://wallpapers.com/images/featured/green-nature-tgy6dtxhgtwubez9.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+}
+.footer_form_content{
+    text-align: center;
 }
 
 /* .image_container img{
