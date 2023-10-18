@@ -1,5 +1,7 @@
 describe('template spec', () => {
   it('passes', () => {
-    cy.visit('https://example.cypress.io')
+    cy.visit('/')
+    // cy.get('.gLFyf').type('Test')
+    cy.get('textarea[name="q"]').type('test')
   })
 })
