@@ -14,9 +14,9 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6.5.0
         with:
-          install-command: yarn install
-          build: yarn build:test
-          start: yarn e2e:start
+          install-command: npm install
+          build: npm run build:test
+          start: npm run e2e:start
           wait-on: 'http://localhost:3000'
           wait-on-timeout: 120
           browser: chrome
