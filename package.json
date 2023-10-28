@@ -3,6 +3,6 @@
     "c:o":"cypress open"
   },
   "devDependencies": {
-    "cypress": "^13.3.0"
+    "cypress": "^13.3.3"
   }
 }
