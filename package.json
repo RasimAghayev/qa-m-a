@@ -1,8 +1,8 @@
 {
   "scripts": {
-    "c:o":"cypress open"
+    "c:o": "cypress open"
   },
   "devDependencies": {
-    "cypress": "^13.3.3"
+    "cypress": "^13.4.0"
   }
 }

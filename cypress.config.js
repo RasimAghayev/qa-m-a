@@ -4,7 +4,7 @@ module.exports = defineConfig({
   projectId: "6b645r",
 
   e2e: {
-    baseUrl: 'https://www.google.com',
+    baseUrl: 'https://turbo.az',
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
