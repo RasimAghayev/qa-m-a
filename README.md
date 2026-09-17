@@ -83,11 +83,16 @@ fixture-backed target for any spec.
 - **`npm audit` reports 11 known vulnerabilities (2 critical, 7 high, 2
   moderate)** in `cypress@13.4.0`'s transitive dependencies (`lodash`,
   `minimatch`, `tmp`, `qs`, `uuid`) — verified locally via `npm install`
-  + `npm audit`, matching what GitHub's Dependabot alerts report for this
-  repo. All are pulled in by Cypress itself, not by any code in this
-  repo; the open `renovate/cypress-16.x` branch above (unmerged) would
-  address this by upgrading Cypress, not something fixed by this
-  documentation pass.
+  + `npm audit`. GitHub's own Dependabot banner reports a different count
+  (14: 1 critical, 7 high, 4 moderate, 2 low) for this repo, most likely
+  because it also scans the pinned GitHub Actions versions in
+  `.github/workflows/cypress.yml`, which `npm audit` doesn't cover — the
+  two figures are reported separately here rather than reconciled, since
+  this pass didn't audit the Actions dependencies directly. Either way,
+  all the `npm audit` findings are pulled in by Cypress itself, not by
+  any code in this repo; the open `renovate/cypress-16.x` branch above
+  (unmerged) would address the npm side by upgrading Cypress, not
+  something fixed by this documentation pass.
 - **`master`'s actual content is older than GitHub's "last pushed" date
   suggests.** The latest commit reachable from `master` is from
   2023-11-12. GitHub reports this repo as last pushed 2026-09-16, but
