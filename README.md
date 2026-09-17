@@ -80,6 +80,14 @@ fixture-backed target for any spec.
   webpack) is Cypress scaffold boilerplate — no component test file
   exists anywhere in the repo.
 - **No `LICENSE` file.**
+- **`npm audit` reports 11 known vulnerabilities (2 critical, 7 high, 2
+  moderate)** in `cypress@13.4.0`'s transitive dependencies (`lodash`,
+  `minimatch`, `tmp`, `qs`, `uuid`) — verified locally via `npm install`
+  + `npm audit`, matching what GitHub's Dependabot alerts report for this
+  repo. All are pulled in by Cypress itself, not by any code in this
+  repo; the open `renovate/cypress-16.x` branch above (unmerged) would
+  address this by upgrading Cypress, not something fixed by this
+  documentation pass.
 - **`master`'s actual content is older than GitHub's "last pushed" date
   suggests.** The latest commit reachable from `master` is from
   2023-11-12. GitHub reports this repo as last pushed 2026-09-16, but
