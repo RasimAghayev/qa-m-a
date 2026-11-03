@@ -1,4 +1,6 @@
 # qa-m-a
+![Views](https://hits.sh/github.com/RasimAghayev/qa-m-a.svg?label=views&color=0e75b6)
+
 
 A personal Cypress end-to-end (E2E) test-automation practice repo. It has
 no application of its own — every test exercises live, third-party
