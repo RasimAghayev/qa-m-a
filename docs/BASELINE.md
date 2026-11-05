@@ -155,6 +155,46 @@ public, third-party production site. `make up` therefore depends on
 long-lived process that doesn't exist here. Same mapping already verified
 on `udemy_cypress_13.6.6`.
 
+## Phase 6 — dependency upgrade re-verification (2026-11-05)
+
+Phase 6 re-ran the same `make verify` gate after confirming (live registry
+checks, see `projects/info/state/handoff/6/qa-m-a.md`) that every
+dependency, the Docker base image, and every CI action were already at
+true latest-stable — some via this phase's own commits
+(`cross-spawn` 7.0.3→7.0.6 and `qs` 6.16.0→6.17.1, both transitive;
+`docker/dockerfile` syntax directive `1.7`→`1.28`), the rest via bot PRs
+already merged in earlier phases (`cypress`→16.2.1, `systeminformation`→
+5.33.19, `cypress-io/github-action`→v7.4.9, `ubuntu-26.04`,
+`actions/download-artifact`@v8.0.2 — all independently re-confirmed as
+current against the registry on 2026-11-05, not assumed from prior docs).
+
+`docker build --target test-run` → real `npx cypress run` against the
+live sites, 51.9s. Extracted via `docker cp` from the built image:
+
+| Spec | Result |
+|---|---|
+| `abb.cy.js` | PASS |
+| `turbo_az.cy.js` | PASS |
+| `turboaz.cy.js` | **FAIL** (same stale-selector cause as the Phase 5 baseline above — unchanged) |
+| `yelloBank.cy.js` | PASS |
+
+**3 passing / 1 failing, exit code 1** — one fewer failure than the Phase
+5 baseline (2 passing / 2 failing, exit code 2). `yelloBank.cy.js` now
+passes because `www.yelo.az` is reachable again today; the Phase 5 run
+hit a timeout against that same external site. This is **not** a product
+of any dependency bump in this phase — nothing in the cypress/Node/action
+bump touches that spec or its target. Documented honestly rather than
+claimed as a fix: the one remaining failure (`turboaz.cy.js`'s stale
+`img[alt="turbo.az"]` selector) is the exact same pre-existing defect
+already recorded above and in `docs/TECHNICAL_DEBT.md` item 2 — Phase 6
+did not touch it, and it remains Phase 7/11 scope.
+
+**No regression against the Phase 5 baseline.** `docker build --target
+test` / `docker build .` still fail on the gate's own
+`RUN test "$(cat /app/.cypress-exit-code)" = "0"` line, exactly as
+expected for a repo whose documented baseline is red for a reason outside
+this phase's scope (the stale selector, not a dependency issue).
+
 ## Out-of-scope findings (for other phases, not fixed here)
 
 1. **`turboaz.cy.js`'s selector is stale against the live site's current
