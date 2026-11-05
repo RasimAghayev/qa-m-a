@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1.7
+# syntax=docker/dockerfile:1.28
 #
 # Phase 5 container baseline for a Cypress E2E *test* repo — there is no app
 # to build or serve here. Every spec drives a live, third-party production
