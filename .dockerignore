@@ -1,0 +1,38 @@
+# Version control
+.git
+.gitattributes
+.gitignore
+.githooks
+
+# Secrets / env — never enter the build context
+.env
+.env.*
+!.env.example
+
+# Dependencies (installed fresh inside the image)
+node_modules
+
+# Cypress-generated artifacts (reports, videos, screenshots, downloads) —
+# none are currently produced/committed, excluded so a local run before
+# `docker build` never leaks stale evidence into a new image.
+cypress/reports/
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/
+cypress/test-results/
+cypress-run.log
+.cypress-exit-code
+gitleaks-report.json
+.gitleaks-staged-tmp/
+
+# Docs / project-management — not needed inside the build context
+docs/
+README.md
+.github/
+
+# Editor/IDE/OS junk
+.vscode
+.idea
+.DS_Store
+Thumbs.db
+*.log
