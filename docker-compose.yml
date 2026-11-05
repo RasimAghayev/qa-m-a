@@ -1,0 +1,17 @@
+name: qa-m-a-p5
+
+# This repo has no application of its own to serve — every spec drives a
+# live, third-party production site directly (turbo.az as the configured
+# baseUrl; abb-bank.az and yelo.az as one-off smoke-check targets). There is
+# therefore nothing to publish a port for: the reserved block (20020-20029,
+# projects/info/state/ports.md) is intentionally left unused, same
+# reasoning already verified on this program's sibling Cypress repo
+# (udemy_cypress_13.6.6).
+services:
+  e2e:
+    build:
+      context: .
+      target: test-run
+    container_name: qa-m-a-p5-e2e
+    # No ports:, no volumes:, no depends_on: — a one-shot run against public
+    # external targets, not a long-lived service.
