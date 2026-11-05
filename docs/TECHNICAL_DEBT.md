@@ -3,6 +3,9 @@
 Each item below states what it is, why it's debt (or isn't), and which
 future phase owns fixing it. Nothing here is fixed in this phase (docs-only).
 
+> **Phase 6 update (2026-11-05):** item 10 below is resolved — see its own
+> note. Every other item is unchanged and still owned by the phase listed.
+
 ## Real debt (needs fixing)
 
 1. **CI workflow cannot succeed — ever, as committed.** `.github/workflows/cypress.yml`'s
@@ -60,6 +63,15 @@ future phase owns fixing it. Nothing here is fixed in this phase (docs-only).
     equivalent), not an assumed side-effect of the cypress bump. Severity:
     P1/P2 (HIGH + MODERATE, both have a trivial non-breaking fix available).
 
+    **RESOLVED — Phase 6, commit `d05a1f8`.** `npm audit fix` against the
+    real lockfile bumped `cross-spawn` 7.0.3→7.0.6 and `qs` 6.16.0→6.17.1,
+    both confirmed live against the npm registry as current latest-stable
+    on 2026-11-05 (re-checked again at Phase 6 close-out, still current).
+    `npm audit` on the resulting lockfile: 0 vulnerabilities. The
+    now-superseded bot PR proposing the same individual `qs` bump (`#41`,
+    Dependabot) was closed as superseded rather than merged, to avoid a
+    redundant no-op merge — see `projects/info/state/handoff/6/qa-m-a.md`.
+
 ## Debt that resolves itself once Phase 6 runs
 
 - `cypress` 16.1.1 → 16.2.1: the open `renovate/cypress-16.x-lockfile`
@@ -75,6 +87,20 @@ future phase owns fixing it. Nothing here is fixed in this phase (docs-only).
 
 `cross-spawn`/`qs` (item 10 above) deliberately do **not** appear in this
 list — they are the one gap neither open bot branch actually closes.
+
+**Phase 6 confirmation (2026-11-05):** all three items above landed
+before Phase 6 started work (merged via earlier phases' bot-PR handling,
+re-verified live against the registry/releases at Phase 6 close-out —
+`cypress` 16.2.1, `cypress-io/github-action` v7.4.9, `systeminformation`
+5.33.19 are each still current latest-stable today). Phase 6's own
+remaining work was therefore: the `cross-spawn`/`qs` bump (item 10,
+resolved above), the `docker/dockerfile` syntax directive `1.7`→`1.28`
+(latest, commit `51d4351`), and adding `renovate.json` so grouping/
+scheduling/PR-limits are explicit instead of implicit app defaults. No
+other dependency, runtime, base image, or CI action in this repo had a
+gap against latest-stable as of this date — see
+`projects/info/state/handoff/6/qa-m-a.md` for the full live-registry
+evidence per item.
 
 Phase 4 should close out (merge/supersede) all three bot branches once
 re-verified; Phase 6 is the backstop for the cypress/action/systeminformation
