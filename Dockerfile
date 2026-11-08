@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1.28
+# syntax=docker/dockerfile:1.28@sha256:bb22d9815c728170f72750f4e5b0d672e06176142e1d602c7e66c050100b7e5b
 #
 # Phase 5 container baseline for a Cypress E2E *test* repo — there is no app
 # to build or serve here. Every spec drives a live, third-party production
