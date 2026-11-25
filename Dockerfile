@@ -13,7 +13,7 @@
 # already locked in package-lock.json (cypress@16.2.1, the Renovate bump
 # Phase 4 merged) — this phase containerizes the current, already-installed
 # version; it does not perform an upgrade (that is Phase 6's job).
-FROM cypress/included:16.2.1@sha256:f1f257405a482bdf95358cd30202d9c3ac69f907d5e96342ae377b8111ff7a15 AS base
+FROM cypress/included:16.4.0@sha256:f41352ed0cddbc88619935b62834d81c01be6084937d5157ddc126bac8000927 AS base
 
 # The image ships Chrome/Electron plus an already-created non-root `node`
 # user (uid/gid 1000). Verified at pin time (`cypress verify` as uid 1000,
